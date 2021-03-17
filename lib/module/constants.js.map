@@ -1,0 +1,1 @@
+{"version":3,"sources":["constants.ts"],"names":["GESTURE"],"mappings":"AAAA,WAAYA,OAAZ;;WAAYA,O;AAAAA,EAAAA,O,CAAAA,O;AAAAA,EAAAA,O,CAAAA,O;AAAAA,EAAAA,O,CAAAA,O;GAAAA,O,KAAAA,O","sourcesContent":["export enum GESTURE {\n  UNDETERMINED = 0,\n  CONTENT,\n  HANDLE,\n}\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.ts"],"names":["ContentWrapper"],"mappings":";;;;;;;AAEA;;;;AADA;eAEeA,uB","sourcesContent":["import type { BottomSheetContentWrapper } from './types';\n// @ts-ignore\nimport { default as ContentWrapper } from './ContentWrapper';\nexport default ContentWrapper as BottomSheetContentWrapper;\n"]}

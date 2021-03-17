@@ -2,6 +2,7 @@ import React, { forwardRef, memo } from 'react';
 import isEqual from 'lodash.isequal';
 import { TapGestureHandler } from 'react-native-gesture-handler';
 import type { BottomSheetContentWrapperProps } from './types';
+import View from "../view";
 
 const ContentWrapperComponent = forwardRef<
   TapGestureHandler,
@@ -12,16 +13,9 @@ const ContentWrapperComponent = forwardRef<
     ref
   ) => {
     return (
-      <TapGestureHandler
-        ref={ref}
-        maxDurationMs={1000000}
-        maxDeltaY={initialMaxDeltaY}
-        shouldCancelWhenOutside={false}
-        onGestureEvent={onGestureEvent}
-        onHandlerStateChange={onHandlerStateChange}
-      >
+      <View>
         {children}
-      </TapGestureHandler>
+      </View>
     );
   }
 );

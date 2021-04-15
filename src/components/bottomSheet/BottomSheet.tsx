@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
   memo,
 } from 'react';
-import {View, ViewStyle} from 'react-native';
+import {View, ViewStyle, Animated as Animated1} from 'react-native';
 import isEqual from 'lodash.isequal';
 import invariant from 'invariant';
 import Animated, {
@@ -275,9 +275,37 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
     );
     //#endregion
 
+      const animatedValue = useMemo(() => new Animated.Value(0), []);
+
+      const opacity = animatedValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 0.3],
+      });
+
+      const closeAnimation = () => {
+          Animated1.timing(animatedValue, {
+              toValue: 0,
+              duration: 300,
+              useNativeDriver: true,
+          }).start();
+      }
+
+      const openAnimation = () => {
+          Animated1.timing(animatedValue, {
+              toValue: 1,
+              duration: 300,
+              useNativeDriver: true,
+          }).start();
+      }
+
     //#region methods
     const handleSnapTo = useCallback(
       (index: number) => {
+          if (index === -1) {
+              closeAnimation();
+          } else {
+              openAnimation();
+          }
         invariant(
           index >= -1 && index <= snapPoints.length - 1,
           `'index' was provided but out of the provided snap points range! expected value to be between -1, ${
@@ -390,7 +418,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
     // render
     return (
       <>
-        <View>
+        <Animated.View style={{flex: 1, backgroundColor: '#000000', opacity}}>
           <Animated.View style={contentContainerStyle}>
             {BackgroundComponent && (
               <BackgroundComponent pointerEvents="none" />
@@ -416,7 +444,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
               </BottomSheetInternalProvider>
             </BottomSheetProvider>
           </Animated.View>
-        </View>
+        </Animated.View>
 
         {_animatedPosition && (
           <Animated.Code

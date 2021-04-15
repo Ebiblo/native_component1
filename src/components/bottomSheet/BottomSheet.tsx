@@ -275,7 +275,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
     );
     //#endregion
 
-      const animatedValue = useMemo(() => new Animated.Value(0), []);
+      const animatedValue = useMemo(() => new Animated1.Value(0), []);
 
       const opacity = animatedValue.interpolate({
           inputRange: [0, 1],
@@ -418,7 +418,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
     // render
     return (
       <>
-        <Animated.View style={{flex: 1, backgroundColor: '#000000', opacity}}>
+        <Animated1.View style={{flex: 1, backgroundColor: '#000000', opacity}}>
           <Animated.View style={contentContainerStyle}>
             {BackgroundComponent && (
               <BackgroundComponent pointerEvents="none" />
@@ -444,7 +444,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
               </BottomSheetInternalProvider>
             </BottomSheetProvider>
           </Animated.View>
-        </Animated.View>
+        </Animated1.View>
 
         {_animatedPosition && (
           <Animated.Code
